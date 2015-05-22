@@ -1,0 +1,83 @@
+@charset 'utf-8';
+
+/* ===============
+* Variables
+=============== */
+// Grid Pattern
+$grid: (
+  index:(
+    (0 0 a a a a a a a b b 0)
+    (c c c c c c c c c c c c)
+    (d d d d d d e e e e e e)
+  ),
+  welcome:(
+    (a a a a a a a a a a a 0)
+  )
+);
+
+// Grid Setup
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+
+/* ===============
+* Import
+=============== */
+@import 'function';
+@import 'mixin';
+
+// @debug 'column, offset:' getColumn(index, a);
+// @debug 'column:' nth(getColumn(index, a), 1);
+// @debug 'offset:' nth(getColumn(index, a), 2);
+
+/* ===============
+* Style
+=============== */
+ * {
+  box-sizing: border-box;
+ }
+ body {
+  margin: 0;
+ }
+.container {
+  padding-right: $grid-gutter-width / 2;
+  padding-left: $grid-gutter-width / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  margin-left:  ($grid-gutter-width / -2);
+  margin-right: ($grid-gutter-width / -2);
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+/* ===============
+* Grid
+=============== */
+[class^='grid-'] {
+  border: 1px solid;
+  font-size: 3em;
+  text-align: center;
+}
+.grid-a {
+  @include make-column(index, a);
+}
+.grid-b {
+  @include make-column(index, b);
+}
+.grid-c {
+  @include make-column(index, c);
+}
+.grid-d {
+  @include make-column(index, d);
+}
+.grid-e {
+  @include make-column(index, e);
+}
+
+.grid-welcome-a {
+  @include make-column(welcome, a);
+}

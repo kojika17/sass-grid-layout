@@ -1,0 +1,22 @@
+// カラムの生成
+@mixin make-column-block($columns, $gutter: $grid-gutter-width) {
+  position: relative;
+  float: left;
+  width: percentage(($columns / $grid-columns));
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+}
+@mixin make-column-offset($columns) {
+  margin-left: percentage(($columns / $grid-columns));
+}
+
+@mixin make-column($module, $type) {
+  $column: getColumn($module, $type);
+  // @debug $column;
+  @include make-column-block(nth($column, 1));
+
+  @if(nth($column, 2) > 0) {
+    @include make-column-offset(nth($column, 2));
+  }
+}
