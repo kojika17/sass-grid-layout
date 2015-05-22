@@ -1,0 +1,10 @@
+{
+  "name": "sass-grid-layout",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "sass/style.scss",
+  "scripts": {
+    "start": "parallelshell 'sass --watch ./sass:.' 'browser-sync start --server --files \"*.html, *.css\"'"
+  },
+  "author": "tomoki kubo"
+}
