@@ -4,9 +4,12 @@
   $column: 0;
   $prevOffset: 0;
   $row: map-get($grid, $module);
+  $offset: 0;
 
   @each $item in $row {
-    $offset: 0;
+    @if(length($item) > 1) {
+      $offset: 0;
+    }
     @each $t in $item {
       @if(type-of($t) == number) {
         $offset: $offset + 1;
